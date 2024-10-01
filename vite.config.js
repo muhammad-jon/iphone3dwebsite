@@ -3,9 +3,11 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  build: {
-    rollupOptions: {
-      // Customize Rollup options if necessary
+  vite: {
+    server: {
+      watch: {
+        usePolling: true,
+      },
     },
   },
 });
