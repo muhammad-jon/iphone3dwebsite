@@ -5,14 +5,14 @@ import { heroVideo, smallHeroVideo } from "../utils";
 
 const Hero = () => {
   const [videoSrc, setVideoSrc] = useState(
-    window.innerWidth < 760 ? smallHeroVideo : heroVideo
+    window.innerWidth < 760 ? true : false
   );
 
   const handleSetVideoSrc = () => {
     if (window.innerWidth < 760) {
-      setVideoSrc(smallHeroVideo);
+      setVideoSrc(true);
     } else {
-      setVideoSrc(heroVideo);
+      setVideoSrc(false);
     }
   };
 
@@ -35,18 +35,23 @@ const Hero = () => {
   return (
     <section className="w-full nav-height bg-black relative">
       <div className="h-5/6 w-100 flex-center flex-col">
-        <p id="hero" className="hero-title">
+        <p id="hero" className="hero-title z-10">
           Iphone 16 pro
         </p>
-        <div>
+        <div className="overflow-hidden flex items-center justify-center h-5/6">
           <video
-            className="pointer-events-none"
+            className={`pointer-events-none md:rotate-0 rotate-90`}
             autoPlay
             muted
             playsInline={true}
             key={videoSrc}
           >
-            <source type="video/mp4" src={videoSrc} />
+            <source
+              type="video/mp4"
+              src={
+                "https://www.apple.com/105/media/us/iphone-16-pro/2024/3616fe73-ad74-4b7f-8b93-a4c0f0b6a2d7/anim/hero/medium_2x.mp4"
+              }
+            />
           </video>
         </div>
       </div>
